@@ -98,4 +98,19 @@ public class BrandService {
         }
 
     }
+
+    /**
+     * @param: [cid]
+     * @return: java.util.List<com.leyou.item.pojo.Brand>
+     * @author: Caobo
+     * @date: 2019/1/14 13:44
+     * @Description: 根据Cid查询品牌列表
+     */
+    public List<Brand> queryBrandListByCid(Long cid) {
+        List<Brand> brands = brandMapper.queryByCategoryId(cid);
+        if (brands == null){
+            throw new LyException(ExceptionEnum.Brand_NOT_FOUND);
+        }
+        return brands;
+    }
 }

@@ -61,4 +61,16 @@ public class BrandController {
         // 没有请求体的话，直接用build而不用body
         return ResponseEntity.status(HttpStatus.CREATED).build();
     }
+
+    /**
+     * @param: [cid]
+     * @return: org.springframework.http.ResponseEntity<java.util.List<com.leyou.item.pojo.Brand>>
+     * @author: Caobo
+     * @date: 2019/1/14 13:41
+     * @Description: 根据Cid查询品牌列表
+     */
+    @GetMapping("cid/{cid}")
+    public ResponseEntity<List<Brand>> queryBrandListByCid(@PathVariable("cid")Long cid){
+        return ResponseEntity.ok(brandService.queryBrandListByCid(cid));
+    }
 }

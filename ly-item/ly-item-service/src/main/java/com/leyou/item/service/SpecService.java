@@ -34,10 +34,12 @@ public class SpecService {
      * @date: 2019/1/11 13:34
      * @Description: 根据gid查询规格组参数
      */
-    public  List<SpecParam> queryGroupParamByGid(Long gid) {
+    public  List<SpecParam> queryGroupParam(Long gid, Long cid, Boolean searching) {
         // 查询条件
         SpecParam specParam = new SpecParam();
         specParam.setGroupId(gid);
+        specParam.setCid(cid);
+        specParam.setSearching(searching);
         //查询
         List<SpecParam> list = specParamMapper.select(specParam);
         if (CollectionUtils.isEmpty(list)){

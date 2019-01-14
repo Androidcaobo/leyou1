@@ -36,14 +36,18 @@ public class SpecController {
     }
 
     /**
-     * @param: [gid]
+     * @param: [gid,cid,searching]
      * @return: org.springframework.http.ResponseEntity<java.util.List<com.leyou.item.pojo.SpecParam>>
      * @author: Caobo
      * @date: 2019/1/11 13:27
-     * @Description: 根据gid查询组内参数
+     * @Description: 根据参数查询组内参数
      */
     @GetMapping("params")
-    public ResponseEntity<List<SpecParam>> queryGroupParamByGid(@RequestParam("gid")Long gid){
-        return ResponseEntity.ok(specService.queryGroupParamByGid(gid));
+    public ResponseEntity<List<SpecParam>> queryGroupParam(
+            @RequestParam(value = "gid",required = false)Long gid,
+            @RequestParam(value = "cid",required = false)Long cid,
+            @RequestParam(value = "searching",required = false)Boolean searching
+    ){
+        return ResponseEntity.ok(specService.queryGroupParam(gid,cid,searching));
     }
 }
